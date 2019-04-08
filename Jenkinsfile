@@ -4,17 +4,19 @@ node {
     try {
         // For workspace of pipeline
         stage("Clean legacy data") {
-          sh """
-            rm -rf .git
-            rm -rf *.*
-            rm -rf *
-          """
+          // sh """
+          //   rm -rf .git
+          //   rm -rf *.*
+          //   rm -rf *
+          // """
         }
 
         stage("Build SeedJob by projects") {
             sh """
-                ls
+                ls -al
             """
+            def json = readFile(file: "./project/projects.json")
+            def jobArray = new JsonSlurperClassic().parseText(json)
             projectWithJobDsl().each { app -> createProjectJobs(app) }
         }
 
@@ -29,8 +31,9 @@ node {
         throw err
     } finally {
         sh """
-            ls
+            ls -al
         """
+        deleteDir()
 
     }
 }
