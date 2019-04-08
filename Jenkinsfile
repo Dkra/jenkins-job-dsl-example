@@ -32,11 +32,10 @@ node {
     } catch (err) {
         throw err
     } finally {
+        deleteDir()
         sh """
             ls -al
         """
-        deleteDir()
-
     }
 }
 
@@ -53,19 +52,4 @@ def createProjectJobs(app) {
             echo "----------------------------------------"
         """
     }
-}
-
-def projectWithJobDsl() {
-  return [
-    [
-      name: 'cra-jenkins-1',
-      repo_url: 'https://github.com/Dkra/cra-jenkins',
-      branch: 'jenkins'
-    ],
-    [
-      name: 'cra-jenkins-2',
-      repo_url: 'https://github.com/Dkra/cra-jenkins',
-      branch: 'jenkins'
-    ]
-  ]
 }
