@@ -17,7 +17,7 @@ node {
             """
             def json = readFile(file: "./project/projects.json")
             def jobArray = new JsonSlurperClassic().parseText(json)
-            projectWithJobDsl().each { app -> createProjectJobs(app) }
+            jobArray.each { app -> createProjectJobs(app) }
         }
 
         stage("Build ListView") {
