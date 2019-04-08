@@ -44,12 +44,12 @@ def projectWithJobDsl() {
     [
       name: 'cra-jenkins-1',
       repo_url: 'https://github.com/Dkra/cra-jenkins',
-      branch: 'master'
+      branch: 'jenkins'
     ],
     [
       name: 'cra-jenkins-2',
       repo_url: 'https://github.com/Dkra/cra-jenkins',
-      branch: 'master'
+      branch: 'jenkins'
     ]
   ]
 }
