@@ -1,5 +1,16 @@
+import groovy.json.JsonSlurperClassic
+
 node {
     try {
+        // For workspace of pipeline
+        stage("Clean legacy data") {
+          sh """
+            rm -rf .git
+            rm -rf *.*
+            rm -rf *
+          """
+        }
+
         stage("Build SeedJob by projects") {
             sh """
                 ls
@@ -28,13 +39,13 @@ node {
 def createProjectJobs(app) {
     stage("Build [${app.name}] Seed Job") {
         sh """
-            echo "------Start Building [${app.name}]---------------------"
+            echo "------Start Building [${app.name}]------"
         """
         git branch: "${app.branch}", url: "${app.repo_url}"
         jobDsl ignoreMissingFiles: true, targets: "./jenkins/**/seed.groovy"
         sh """
             ls -al
-            echo "---------------------------"
+            echo "----------------------------------------"
         """
     }
 }

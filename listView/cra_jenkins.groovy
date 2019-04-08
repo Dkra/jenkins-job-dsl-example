@@ -7,9 +7,9 @@ listView('cra-jenkins-Project') {
         regex(/cra-jenkins.+/)
     }
     jobFilters {
-        status {
-            status(Status.UNSTABLE)
-        }
+        // status {
+        //     status(Status.UNSTABLE)
+        // }
     }
     columns {
         status()
