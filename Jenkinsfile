@@ -32,7 +32,7 @@ node {
     } catch (err) {
         throw err
     } finally {
-        deleteDir()
+        // deleteDir()
         sh """
             ls -al
         """
