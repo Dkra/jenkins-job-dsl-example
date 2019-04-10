@@ -46,7 +46,7 @@ def createProjectJobs(app) {
             echo "------Start Building [${app.name}]------"
         """
         git branch: "${app.branch}", url: "${app.repo_url}"
-        jobDsl ignoreMissingFiles: true, targets: "./jenkins/**/seed.groovy"
+        jobDsl ignoreMissingFiles: true, targets: "./jenkins/**/seedJob.groovy"
         sh """
             ls -al
             echo "----------------------------------------"
