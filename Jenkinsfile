@@ -2,7 +2,7 @@ import groovy.json.JsonSlurperClassic
 
 node {
     try {
-        stage("Clone Root SeedJob Repository") {
+        stage("Clone SeedJob Manager Repository") {
             git branch: "master", url: "https://github.com/Dkra/jenkins-job-dsl-example"
         }
 
