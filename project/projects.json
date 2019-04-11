@@ -3,5 +3,10 @@
 		"name": "cra-jenkins-1",
 		"repo_url": "https://gitlab.com/Dkra/cra-jenkins-dsl-example.git",
 		"branch": "master"
+	},
+	{
+		"name": "project2",
+		"repo_url": "https://gitlab.com/Dkra/cra-jenkins-dsl-example.git",
+		"branch": "master"
 	}
 ]
