@@ -3,27 +3,15 @@ import groovy.json.JsonSlurperClassic
 node {
     try {
         // For workspace of pipeline
-        stage("Clean legacy data & Clone") {
+        stage("Clean old data & Clone") {
           git branch: "master", url: "https://github.com/Dkra/jenkins-job-dsl-example"
-          sh """
-              ls -al
-          """
-          // sh """
-          //   rm -rf .git
-          //   rm -rf *.*
-          //   rm -rf *
-          // """
         }
 
         stage("Build ListView") {
-            sh """
-                ls
-            """
             jobDsl ignoreMissingFiles: true, targets: "./listView/*.groovy"
         }
 
         stage("Build SeedJob by projects") {
-
             def json = readFile(file: "./project/projects.json")
             def jobArray = new JsonSlurperClassic().parseText(json)
             jobArray.each { app -> createProjectJobs(app) }
@@ -32,7 +20,7 @@ node {
     } catch (err) {
         throw err
     } finally {
-        // deleteDir()
+        deleteDir()
         sh """
             ls -al
         """
